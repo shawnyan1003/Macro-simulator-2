@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Macroeconomic Policy Simulator · IBDP Economics</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>" />
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="sky"><span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span><span class="cloud c4"></span></div>
+
+<!-- ==================== Login / Register ==================== -->
+<section id="login" class="screen">
+  <div class="login-wrap">
+    <button class="btn ghost lang-btn" id="btnLangLogin">🌐 中文</button>
+    <div class="login-title">
+      <div class="big-emoji">🏛️ 📈 🌏</div>
+      <h1>Macroeconomic Policy Simulator</h1>
+      <p class="sub">IBDP Economics HL · Three-nation macro policy battle · A full year in government</p>
+    </div>
+
+    <div class="tabs-mini">
+      <button class="tmini active" data-lt="student">🎓 Join as Student</button>
+      <button class="tmini" data-lt="teacher">🧑‍🏫 Teacher Login</button>
+    </div>
+
+    <!-- Student -->
+    <div id="pane-student">
+      <div class="country-picker" id="countryPicker"></div>
+      <div id="joinForm" class="card soft hidden"></div>
+    </div>
+
+    <!-- Teacher -->
+    <div id="pane-teacher" class="hidden">
+      <div class="card soft" style="max-width:420px;margin:0 auto">
+        <h3>🧑‍🏫 Teacher Super Account</h3>
+        <p class="hint">Teachers can view every country's accounts and passwords, advance quarters, publish external shocks and adjust indicator weights.</p>
+        <label>Username<input id="tUser" type="text" value="teacher" autocomplete="username" /></label>
+        <label>Password<input id="tPass" type="password" autocomplete="current-password" /></label>
+        <button class="btn primary block" id="btnTeacherLogin">Log In</button>
+      </div>
+    </div>
+
+    <p class="foot">All data is stored on the server — refreshing the page never loses progress · double-click any economics term to see its definition</p>
+  </div>
+</section>
+
+<!-- ==================== Main ==================== -->
+<section id="game" class="screen hidden">
+  <header class="topbar">
+    <div class="tb-left">
+      <span class="mascot" id="hMascot">🐉</span>
+      <div>
+        <div class="tb-name" id="hCountry">Cathay Federation</div>
+        <div class="tb-sub"><span id="hRole" class="role-chip">Government</span><span id="hMembers" class="muted"></span></div>
+      </div>
+    </div>
+    <div class="tb-mid">
+      <div class="clock"><span id="hTime">2025 Q1</span><small id="hPhase">Setup phase</small></div>
+    </div>
+    <div class="tb-right">
+      <div class="score-chip" id="hScore" title="Composite Economic Health Index">--</div>
+      <button class="btn ghost lang-btn" id="btnLang">🌐 中文</button>
+      <button class="btn ghost" id="btnGlossary">📖 Glossary</button>
+      <button class="btn ghost" id="btnLogout">Log out</button>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-v="overview">🏠 Overview</button>
+    <button class="tab" data-v="data">📊 Data</button>
+    <button class="tab" data-v="policy">🎛️ Policy Toolkit</button>
+    <button class="tab" data-v="world">🌍 Trade & FX</button>
+    <button class="tab" data-v="feed">📜 Country Feed</button>
+    <button class="tab" data-v="team">👥 My Team</button>
+    <button class="tab hidden" data-v="teacher" id="tabTeacher">🧑‍🏫 Teacher Panel</button>
+  </nav>
+
+  <main id="main">
+    <div class="view" id="view-overview"></div>
+    <div class="view hidden" id="view-data"></div>
+    <div class="view hidden" id="view-policy"></div>
+    <div class="view hidden" id="view-world"></div>
+    <div class="view hidden" id="view-feed"></div>
+    <div class="view hidden" id="view-team"></div>
+    <div class="view hidden" id="view-teacher"></div>
+  </main>
+</section>
+
+<div id="tip" class="tip hidden"></div>
+<div id="toast" class="toast hidden"></div>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-box">
+    <button class="modal-x" id="modalX">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="/i18n.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "ibdp-econ-simulator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "IBDP Economics HL macroeconomic policy simulator (three-country policy game with international trade and exchange rate linkages)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "reset": "node scripts/reset.js",
+    "selftest": "node scripts/selftest.js",
+    "cf:dev": "wrangler dev",
+    "cf:deploy": "wrangler deploy",
+    "cf:db:create": "wrangler d1 create econ-sim",
+    "cf:db:init": "wrangler d1 execute econ-sim --remote --file=./migrations/0001_init.sql",
+    "cf:db:reset": "wrangler d1 execute econ-sim --remote --command=\"DELETE FROM world\""
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
